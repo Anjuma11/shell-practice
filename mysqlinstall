@@ -10,4 +10,12 @@ else
     echo "You are running in root access"
 fi
 
-dnf install mysql -y
+dnf install mysqldfff -y
+
+if [ $? -eq 0 ]
+then 
+    echo "Installing Mysql is....SUCCESS"
+else
+    echo "Installing Mysql is....FAILURE"
+    exit 1 #gives status code other than 0
+fi
