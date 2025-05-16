@@ -1,4 +1,4 @@
-Num=$2
+Num=$1
 
 if [ $Num -lt 10 ] 
 then
