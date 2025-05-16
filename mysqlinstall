@@ -2,11 +2,12 @@
 
 user=$( id -u )
 
-echo "exit code of status of user type is $?"
+echo "exit code of status of user type is $user"
 
-if [ $user -ne 0 ]
+if [ $? -ne 0 ]
 then 
     echo "you don't have root access to install mysql"
+    exit 1
 
 else
     echo "You are running in root access"
