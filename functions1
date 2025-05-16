@@ -2,33 +2,32 @@
 
 USERID=$(id -u)
 
-if [ $USERID -ne 0 ];then
-    echo "ERROR :: Please enter the script in root access"
+if [ $USERID -ne 0 ]; then
+    echo "ERROR :: Please run the script with root access"
     exit 1
 else
-    echo "You are running in root access"
+    echo "You are running with root access"
 fi
 
-VALIDATE()
-{
-    if [ $1 -eq 0 ];then
+VALIDATE() {
+    if [ $1 -eq 0 ]; then
         echo "Installing $2 is ..... SUCCESS"
     else
         echo "Installing $2 is ..... FAILURE"
         exit 1
     fi
-}   
+}
 
-
-Install_Function(){
-    dnf list installed $1
+Install_Function() {
+    dnf list installed "$1" &>/dev/null
     if [ $? -ne 0 ]; then
-        echo "$1 is not installed going to install it"
-        dnf install "$1" -y
+        echo "$1 is not installed. Installing..."
+        dnf install "$1" -y &>/dev/null
         VALIDATE $? "$1"
     else
         echo "$1 is already installed"
     fi
 }
 
-Install_Fucntion "nginx"
+# Call the function correctly
+Install_Function "nginx"
