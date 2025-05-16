@@ -22,7 +22,7 @@ VALIDATE()
 
 Install_Function(){
     dnf list installed $2
-    if [ $1 -ne 0 ]; then
+    if [ $? -ne 0 ]; then
         echo "$2 is not installed going to install it"
         dnf install $2 -y
         VALIDATE $? "$2"
@@ -31,4 +31,4 @@ Install_Function(){
     fi
 }
 
-Install_Fucntion $? "nginx"
+Install_Fucntion "nginx"
