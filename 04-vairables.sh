@@ -1,5 +1,5 @@
 echo "Enter your pin number::"
 
-read PIN
+read PIN #here pin is variable
 
 echo "You entered $PIN"
