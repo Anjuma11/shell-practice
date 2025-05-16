@@ -5,13 +5,13 @@ USERID=$(id -u)
 if [ $USERID -eq 0 ] 
 then
     echo "You are running in root access"
-     #gives status code other than 0
+     
 else
     echo "ERROR:: Please run this script in root access"
-    exit 1
+    exit 1 #gives status code other than 0
 fi
 
-dnf install mysqldfff -y
+dnf install mysql -y
 
 if [ $? -eq 0 ]
 then 
