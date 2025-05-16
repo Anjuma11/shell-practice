@@ -5,10 +5,10 @@ user=$( id -u )
 if [ $user -ne 0 ]
 then 
     echo "you don't have root access to install mysql"
-    
+
 else
     echo "You are running in root access"
-    exit 1
+    
 
 fi
 
@@ -24,12 +24,14 @@ fi
 
 dnf list installed mysql
 
-if [ $? -ne 0 ]
+echo "exit code of installation status of mysql is $?"
+
+
+if [ $? -eq 0 ]
 then 
     echo "You already have mysql installed"
-    exit 1
 else
-    echo "Your don't have mysql"
+    echo "You don't have mysql"
 
 fi
 
