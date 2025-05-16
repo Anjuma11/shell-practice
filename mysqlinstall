@@ -22,5 +22,16 @@ else
 
 fi
 
+dnf list installed mysql
+
+if [ $? -ne 0 ]
+then 
+    echo "You already have mysql installed"
+    exit 1
+else
+    echo "Your don't have mysql"
+
+fi
+
 
 
