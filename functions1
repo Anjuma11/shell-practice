@@ -21,13 +21,13 @@ VALIDATE()
 
 
 Install_Function(){
-    dnf list installed $2
+    dnf list installed $1
     if [ $? -ne 0 ]; then
-        echo "$2 is not installed going to install it"
-        dnf install $2 -y
-        VALIDATE $? "$2"
+        echo "$1 is not installed going to install it"
+        dnf install "$1" -y
+        VALIDATE $? "$1"
     else
-        echo "$2 is already installed"
+        echo "$1 is already installed"
     fi
 }
 
