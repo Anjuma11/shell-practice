@@ -1,0 +1,10 @@
+#!/bin/bash
+
+function(){
+    
+    echo "i came from the input of 1st argument:: $1"
+}
+
+read "Enter arugment to be passed to function::" Argumentname
+
+function Argumentname
