@@ -16,7 +16,7 @@ my_function() {
 }
 
 # Example list of values
-arguments=("apple" "banana" "cherry")
+arguments=read -p "Enter argument to be passed::"
 
 for i in "${arguments[@]}"; do
     my_function "$i"
