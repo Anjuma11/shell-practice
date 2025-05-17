@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function() {
+argfunction1() {
     echo "i came from the input of 1st argument:: $1"
 }
 
 read -p "Enter arugment to be passed to function::" Argumentname
 
-function "$Argumentname"
+argfunction1 "$Argumentname"
