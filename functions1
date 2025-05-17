@@ -19,10 +19,10 @@ VALIDATE() {
 }
 
 Install_Function() {
-    dnf list installed "$1" &>/dev/null
+    dnf list installed "$1" 
     if [ $? -ne 0 ]; then
         echo "$1 is not installed. Installing..."
-        dnf install "$1" -y &>/dev/null
+        dnf install "$1" -y 
         VALIDATE $? "$1"
     else
         echo "$1 is already installed"
