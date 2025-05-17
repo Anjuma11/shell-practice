@@ -1,9 +1,23 @@
 #!/bin/bash
 
-argfunction1() {
-    echo "i came from the input of 1st argument:: $1"
+# argfunction1() {
+#     echo "i came from the input of 1st argument:: $1"
+# }
+
+# read -p "Enter arugment to be passed to function::" Argumentname
+
+# argfunction1 "$Argumentname"
+
+
+#!/bin/bash
+
+my_function() {
+    echo "I came from the input of 1st argument: $1"
 }
 
-read -p "Enter arugment to be passed to function::" Argumentname
+# Example list of values
+arguments=("apple" "banana" "cherry")
 
-argfunction1 "$Argumentname"
+for i in "${arguments[@]}"; do
+    my_function "$i"
+done
