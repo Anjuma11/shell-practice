@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function(){
+function() {
     echo "i came from the input of 1st argument:: $1"
 }
 
