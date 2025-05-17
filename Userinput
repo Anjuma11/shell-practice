@@ -1,10 +1,9 @@
 #!/bin/bash
 
 function(){
-    t=$Argumentname
-    echo "i came from the input of 1st argument:: $t"
+    echo "i came from the input of 1st argument:: $1"
 }
 
-read "Enter arugment to be passed to function::" Argumentname
+read -p "Enter arugment to be passed to function::" Argumentname
 
-function Argumentname
+function "$Argumentname"
