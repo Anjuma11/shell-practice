@@ -1,8 +1,8 @@
 #!/bin/bash
 
 function(){
-    
-    echo "i came from the input of 1st argument:: $1"
+    t=$Argumentname
+    echo "i came from the input of 1st argument:: $t"
 }
 
 read "Enter arugment to be passed to function::" Argumentname
