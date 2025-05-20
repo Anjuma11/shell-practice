@@ -1,8 +1,8 @@
 #!/bin/bash
 
-read -p "enter the num1::"
+Num1= read -p "enter the num1::"
 
-read -p "enter the num2::"
+Num2= read -p "enter the num2::"
 
 
 sum=$(( Num1+Num2 ))
