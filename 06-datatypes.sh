@@ -3,7 +3,7 @@ Num2=$2
 
 SUM=$(( Num1+Num2 ))
 
-echo $SUM
+$SUM
 
 echo "sum of $Num1 and $Num2 is $SUM" 
 
