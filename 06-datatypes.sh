@@ -3,6 +3,8 @@ Num2=$2
 
 SUM=$(( Num1+Num2 ))
 
+echo $SUM
+
 echo "sum of $Num1 and $Num2 is $SUM" 
 
 # Ex: Num1=100 Num2=200 
