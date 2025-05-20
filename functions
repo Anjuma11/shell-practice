@@ -1,8 +1,10 @@
 #!/bin/bash
 
-R= "e\[31m"
-G= "e\[32m"
-N= "e\[0m"
+R="e\[31m"
+
+G="e\[32m"
+
+N="e\[0m"
 
 USERID=$(id -u)
 
@@ -29,13 +31,13 @@ Package=("mysql" "nginx" "nodejs")
 
 for i in ${Package[@]}
 do
-    dnf list installed $Package
+    dnf list installed $i
     if [ $? -ne 0 ]; then
-        echo "$Package is not installed going to install it"
+        echo "$i is not installed going to install it"
         dnf install mysql -y
-        VALIDATE $? $Package
+        VALIDATE $? $i
     else
-        echo "$Package is already installed"
+        echo "$i is already installed"
     fi
 done
   
