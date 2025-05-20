@@ -1,10 +1,8 @@
 #!/bin/bash
 
-Num1= read -p "enter the num1::"
+echo "enter number1::"
+read -p Num1
+echo "enter number2::"
+read -p Num2
 
-Num2= read -p "enter the num2::"
-
-
-sum=$(( Num1+Num2 ))
-
-echo "multiplication of $Num1 and $Num2 is $sum"
+echo "sum of two numbers is $Num1+$Num2"
