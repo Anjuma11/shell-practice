@@ -1,35 +1,10 @@
 #!/bin/bash
 
-# argfunction1() {
-#     echo "i came from the input of 1st argument:: $1"
-# }
+read -p "enter the num1::"Num1
 
-# read -p "Enter arugment to be passed to function::" Argumentname
-
-# argfunction1 "$Argumentname"
+read -p "enter the num2::"Num2
 
 
-#!/bin/bash
+multiply=$(( $Num1*$Num2 ))
 
-my_function() {
-    echo "I came from the input of $1 argument: $2"
-}
-
-# Example list of values
-
-for i in {1..3}; do
-    read -p "Enter argument to be passed $i::" arguments
-    my_function "$i" "$arguments"
-done
-
-
-#OUTPUT
-
-# Enter argument to be passed 1::Shannu
-# I came from the input of 1 argument: Shannu
-# Enter argument to be passed 2::Aman
-# I came from the input of 2 argument: Aman
-# Enter argument to be passed 3::Arifa
-# I came from the input of 3 argument: Arifa
-
-
+echo "multiplication of $Num1 and $Num2 is $mulitply"
