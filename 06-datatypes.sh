@@ -1,6 +1,6 @@
-echo "enter num1 :: "
+
 Num1=$1 
-echo "enter num2 :: "
+
 Num2=$2
 
 SUM=$(( Num1+Num2 ))
