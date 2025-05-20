@@ -3,7 +3,7 @@ Num2=$2
 
 SUM=$(( $Num1 + $Num2 ))
 $SUM
-echo "sum of $Num1 and $Num2 is $sum" 
+echo "sum of $Num1 and $Num2 is $SUM" 
 
 # Ex: Num1=100 Num2=200 
 #output:sum of 100 and 200 is 300
