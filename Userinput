@@ -5,6 +5,6 @@ read -p "enter the num1::"
 read -p "enter the num2::"
 
 
-sum=$(( $Num1+$Num2 ))
+sum=$(( Num1+Num2 ))
 
 echo "multiplication of $Num1 and $Num2 is $sum"
