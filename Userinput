@@ -5,4 +5,5 @@ read -p Num1
 echo "enter number2::"
 read -p Num2
 
-echo "sum of two numbers is $Num1+$Num2"
+sum=$(( Num1+Num2 ))
+echo "sum of two numbers is $sum"
