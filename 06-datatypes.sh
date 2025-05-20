@@ -1,8 +1,8 @@
 Num1=$1 
 Num2=$2
 
-SUM=$(( $Num1 + $Num2 ))
-$SUM
+SUM=$(( $Num1+$Num2 ))
+
 echo "sum of $Num1 and $Num2 is $SUM" 
 
 # Ex: Num1=100 Num2=200 
