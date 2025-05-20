@@ -1,5 +1,9 @@
 #!/bin/bash
 
+$R="e\[31m"
+$G="e\[32m"
+$N="e\[0m"
+
 USERID=$(id -u)
 
 if [ $USERID -ne 0 ];then
@@ -9,22 +13,30 @@ else
     echo "You are running in root access"
 fi
 
+
+
 VALIDATE()
 {
     if [ $1 -eq 0 ];then
-        echo "Installing $2 is ..... SUCCESS"
+        echo "Installing $2 is .....$G SUCCESS $N"
     else
-        echo "Installing $2 is ..... FAILURE"
+        echo "Installing $2 is .....$R FAILURE $N"
         exit 1
     fi
-}   
+}
 
-dnf list installed mysql
+Package=("mysql" "nginx" "nodejs")
 
-if [ $? -ne 0 ]; then
-    echo "mysql is not installed going to install it"
-    dnf install mysql -y
-    VALIDATE $? "mysql"
-else
-    echo "mysql is already installed"
-fi
+for i in ${Package[@]}
+do
+    dnf list installed $Package
+    if [ $? -ne 0 ]; then
+        echo "$Package is not installed going to install it"
+        dnf install mysql -y
+        VALIDATE $? $Package
+    else
+        echo "$Package is already installed"
+    fi
+done
+  
+
