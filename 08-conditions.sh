@@ -1,4 +1,5 @@
 Num=$1
+Num=$2
 
 if [ $Num -lt 10 ] 
 then
@@ -8,3 +9,4 @@ else
 
     echo "Num $Num is greater than 10"
 fi
+

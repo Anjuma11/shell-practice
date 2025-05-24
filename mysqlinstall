@@ -11,7 +11,14 @@ else
     exit 1 #gives status code other than 0
 fi
 
-dnf install mysql -y
+dnf list installed mysql
+
+if [ $? -eq 0 ]
+then 
+    echo "Mysql is already installed"
+else
+    echo "Mysql is not yet installed"
+    dnf install mysql -y
 
 if [ $? -eq 0 ]
 then 
@@ -21,12 +28,14 @@ else
     exit 1 #gives status code other than 0
 fi
 
-dnf list installed mysql
 
-if [ $? -eq 0 ]
-then 
-    echo "Mysql is already installed"
-else
-    echo "Mysql is not yet installed"
-    exit 1
-fi
+
+# dnf list installed mysql
+
+# if [ $? -eq 0 ]
+# then 
+#     echo "Mysql is already installed"
+# else
+#     echo "Mysql is not yet installed"
+#     exit 1
+# fi
