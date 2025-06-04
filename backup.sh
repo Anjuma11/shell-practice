@@ -6,10 +6,10 @@ N="\e[0m"
 User=$(id -u)
 SOURCE_DIR=$1
 DESTI_DIR=$2
-DAYS=${3 : -14}
+DAYS=${3:-14}
 
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FOLDER="/var/log/app-logs"
+LOGS_FOLDER="/var/log/app-logs"
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
 SCRIPT_NAME=$PWD
 
@@ -33,6 +33,9 @@ VALIDATE(){
         exit 1
     fi
 }
+
+check_root
+mkdir -p $LOGS_FOLDER
 
 USAGE(){
 
