@@ -52,7 +52,7 @@ then
 	echo "$R Source directory $SOURCE_DIR doesn't exist $N"
 fi
 
-if [ ! -d $desti-dir]
+if [ ! -d $DESTI_DIR]
 then 
 	echo "$R destination directory $DESTI_DIR doesn't exist $N"
 fi
@@ -61,7 +61,7 @@ FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES_TO_DELETE ]
 then 
-	echo "Files to zip are : $files-to-delete"
+	echo "Files to zip are : $FILES_TO_DELETE"
 	Timestamp=$(date +%F-%H-%M-%S)
 	Zip_file= "$DESTI_DIR/app-logs-$timestamp.zip"
 	echo $FILES_TO_DELETE  | zip -@ $Zip_file
@@ -75,7 +75,7 @@ then
             rm -rf $filepath
         done <<< $FILES_TO_DELETE  
 
-        echo -e "log filees older than $DAYS are deleted from $SOURCE_DIR "
+        echo -e "log files older than $DAYS are deleted from $SOURCE_DIR "
 	else
 		echo -e "zip file creation…. $R Failure $N"
         exit 1
