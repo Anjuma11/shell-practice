@@ -69,16 +69,20 @@ then
 	if [ -f $Zip_file ]
 	then
 		echo -e "successfully created Zip file"
-        while IFS= read -r filepath
-        do
-            echo "deleting file: $filepath "
-            rm -rf $filepath
-        done <<< $FILES_TO_DELETE  
 
-        echo -e "log files older than $DAYS are deleted from $SOURCE_DIR "
+    while IFS= read -r filepath
+    do
+        echo "deleting file: $filepath "
+        rm -rf $filepath
+    done <<< $FILES_TO_DELETE  
+
+    echo -e "log files older than $DAYS are deleted from $SOURCE_DIR "
+
 	else
 		echo -e "zip file creation…. $R Failure $N"
+
         exit 1
+
 	fi
 else
 	echo -e "Files not found older than 14 days ....$Y SKIPPING $N"
