@@ -64,7 +64,7 @@ then
 	echo "Files to zip are : $FILES_TO_DELETE"
 	Timestamp=$(date +%F-%H-%M-%S)
 	Zip_file= "$DESTI_DIR/app-logs-$Timestamp.zip"
-	echo $FILES_TO_DELETE  | zip -@ $Zip_file
+	find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ "$Zip_file"
 	
 	if [ -f $Zip_file ]
 	then
