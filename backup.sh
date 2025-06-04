@@ -49,12 +49,12 @@ fi
 
 if [ ! -d $SOURCE_DIR ]
 then 
-	echo "$R Source directory $SOURCE_DIR doesn't exist $N"
+	echo -e "$R Source directory $SOURCE_DIR doesn't exist $N"
 fi
 
-if [ ! -d $DESTI_DIR]
+if [ ! -d $DESTI_DIR ]
 then 
-	echo "$R destination directory $DESTI_DIR doesn't exist $N"
+	echo -e "$R destination directory $DESTI_DIR doesn't exist $N"
 fi
 
 FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
