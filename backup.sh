@@ -65,10 +65,10 @@ FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES_TO_DELETE ]
 then
-    ehco -e "Files found "
-    TIME_STAMP=$( date %F-%H-%M-%S )
+    ehco -e "Files to zip are: $FILES_TO_DELETE"
+    TIME_STAMP=$( date +%F-%H-%M-%S )
     ZIP_FILE="$DESTI_DIR/app-logs-$TIME_STAMP.zip"
-    $FILES_TO_DELETE | zip -@ $ZIP_FILE
+    find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ $ZIP_FILE
     if [ -f $ZIP_FILE ]
     then
         ehco -e "Successfully created zip file"
