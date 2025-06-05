@@ -65,17 +65,22 @@ FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
 if [ ! -z $FILES_TO_DELETE ]
 then
-    ehco -e "Files to zip are: $FILES_TO_DELETE"
+    echo -e "Files to zip are: $FILES_TO_DELETE"
+
     TIME_STAMP=$( date +%F-%H-%M-%S )
     ZIP_FILE="$DESTI_DIR/app-logs-$TIME_STAMP.zip"
     find $SOURCE_DIR -name "*.log" -mtime +$DAYS | zip -@ $ZIP_FILE
+
     if [ -f $ZIP_FILE ]
     then
-        ehco -e "Successfully created zip file"
+        echo -e "Successfully created zip file"
+
         while IFS= read -r filepath
         do
-            ehco -e "deleting file: $filepath"
+            echo -e "deleting file: $filepath"
+            rm -rf $filepath
         done <<< $FILES_TO_DELETE
+        echo -e "Log files older than $DAYS are removed from source directory $SOURCE_DIR....$G SUCCESS $N"
     else
         echo -e "Zip_file Creation.....$R Failure$N"
         exit 1
