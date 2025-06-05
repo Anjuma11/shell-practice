@@ -3,7 +3,7 @@
 USERID=$(id -u)
 SOURCE_DIR=$1
 DESTI_DIR=$2
-DAYS=$(3:-14)
+DAYS=${3:-14}
 
 R="\e[31m"
 G=="\e[32m"
@@ -13,9 +13,7 @@ N="\e[0m"
 LOGS_FOLDER="/var/log/shell-script-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-SOURCE_DIR=/home/ec2-user/app-logs
 
-mkdir -p $LOGS_FOLDER
 
 check_root(){
     if [ $USERID -ne 0 ]
@@ -37,26 +35,51 @@ VALIDATE(){
     fi
 }
 
+check_root
+mkdir -p $LOGS_FOLDER
+
 USAGE(){
     echo -e "$R USAGE:: $N backup.sh <source-dir> <desti-dir> <days(optionnal)>"
+    exit 1
 }
 
 echo -e "Script started executing at $(date)" | tee -a $LOG_FILE
 
-FILES_TO_DELETE=$(find $1 -name "*.log" -mtime +$3)
 
 if [ $# -lt 2 ]
 then
     USAGE
 fi
 
-# if [ ! -d $2 ]
-# then
-#     echo -e ""
-# else
+if [ ! -d $SOURCE_DIR ]
+then
+    echo -e "$R Source directory $SOURCE_DIR doesnot exist . Please check $N"
+fi
 
-# if [ ! -d $1 ]
-# then
-#     echo -e ""
-# else
-# fi
+if [ ! -d $DESTI_DIR ]
+then
+    echo -e "$R destination directory $DESTI_DIR doesnot exist . Please check $N"
+fi
+
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+
+if [ ! -z $FILES_TO_DELETE ]
+then
+    ehco -e "Files found "
+    TIME_STAMP=$( date %F-%H-%M-%S )
+    ZIP_FILE="$DESTI_DIR/app-logs-$TIME_STAMP.zip"
+    $FILES_TO_DELETE | zip -@ $ZIP_FILE
+    if [ -f $ZIP_FILE ]
+    then
+        ehco -e "Successfully created zip file"
+        while IFS= read -r filepath
+        do
+            ehco -e "deleting file: $filepath"
+        done <<< $FILES_TO_DELETE
+    else
+        echo -e "Zip_file Creation.....$R Failure$N"
+        exit 1
+    fi
+else
+    echo -e "files older than 14 days are not found $Y SKIPPING $N"
+fi
