@@ -9,7 +9,7 @@ N="\e[0m"
 LOGS_FOLDER="/var/log/shell-script-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-SOURCE_DIR=/home/ec2-user/app-log
+SOURCE_DIR=/home/ec2-user/app-logs
 
 mkdir -p $LOGS_FOLDER
 
