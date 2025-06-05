@@ -12,7 +12,7 @@ N="\e[0m"
 
 LOGS_FOLDER="/var/log/shell-script-logs"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE="$LOGS_FOLDER/backup.log"
 
 
 check_root(){
@@ -54,18 +54,20 @@ fi
 if [ ! -d $SOURCE_DIR ]
 then
     echo -e "$R Source directory $SOURCE_DIR doesnot exist . Please check $N"
+    exit 1
 fi
 
 if [ ! -d $DESTI_DIR ]
 then
     echo -e "$R destination directory $DESTI_DIR doesnot exist . Please check $N"
+    exit 1
 fi
 
-FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
+FILES=$(find $SOURCE_DIR -name "*.log" -mtime +$DAYS)
 
-if [ ! -z $FILES_TO_DELETE ]
+if [ ! -z "$FILES" ]
 then
-    echo -e "Files to zip are: $FILES_TO_DELETE"
+    echo -e "Files to zip are: $FILES"
 
     TIME_STAMP=$( date +%F-%H-%M-%S )
     ZIP_FILE="$DESTI_DIR/app-logs-$TIME_STAMP.zip"
@@ -77,9 +79,9 @@ then
 
         while IFS= read -r filepath
         do
-            echo -e "deleting file: $filepath"
+            echo -e "deleting file: $filepath" | tee -a $LOG_FILE
             rm -rf $filepath
-        done <<< $FILES_TO_DELETE
+        done <<< $FILES
         echo -e "Log files older than $DAYS are removed from source directory $SOURCE_DIR....$G SUCCESS $N"
     else
         echo -e "Zip_file Creation.....$R Failure$N"
