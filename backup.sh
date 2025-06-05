@@ -10,7 +10,7 @@ DAYS=${3:-14}
 
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 LOGS_FOLDER="/var/log/app-logs"
-LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE="$LOG_FOLDER/backup.log"
 SCRIPT_NAME=$PWD
 
 check_root(){
